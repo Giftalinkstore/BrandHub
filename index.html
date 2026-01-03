@@ -1,9 +1,10 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>BrandHub</title>
+    <title>BrandHub | Domain & Brand Manager</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌐</text></svg>">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,8 +13,10 @@
     <style>
       body {
         font-family: 'Inter', sans-serif;
-        background-color: #000;
+        background-color: #020617;
         color: #fff;
+        margin: 0;
+        overflow-x: hidden;
       }
       /* Custom Scrollbar */
       ::-webkit-scrollbar {
@@ -32,7 +35,7 @@
       }
       
       .glass-panel {
-        background: rgba(255, 255, 255, 0.05);
+        background: rgba(255, 255, 255, 0.03);
         backdrop-filter: blur(20px);
         -webkit-backdrop-filter: blur(20px);
         border: 1px solid rgba(255, 255, 255, 0.08);
@@ -44,7 +47,7 @@
       }
       .glass-card-hover:hover {
         transform: translateY(-4px) scale(1.01);
-        background: rgba(255, 255, 255, 0.08);
+        background: rgba(255, 255, 255, 0.06);
         border-color: rgba(255, 255, 255, 0.2);
         box-shadow: 0 12px 40px -8px rgba(0, 0, 0, 0.5);
       }
@@ -65,19 +68,22 @@
 {
   "imports": {
     "react": "https://esm.sh/react@^19.2.3",
-    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
-    "react/": "https://esm.sh/react@^19.2.3/",
-    "lucide-react": "https://esm.sh/lucide-react@^0.562.0",
+    "react-dom": "https://esm.sh/react-dom@^19.2.3",
+    "react-dom/client": "https://esm.sh/react-dom@^19.2.3/client",
+    "react/jsx-runtime": "https://esm.sh/react@^19.2.3/jsx-runtime",
+    "lucide-react": "https://esm.sh/lucide-react@^0.475.0",
     "path": "https://esm.sh/path@^0.12.7",
     "vite": "https://esm.sh/vite@^7.3.0",
-    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.2"
+    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.2",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "react/": "https://esm.sh/react@^19.2.3/"
   }
 }
 </script>
-<link rel="stylesheet" href="/index.css">
 </head>
   <body>
     <div id="root"></div>
-  <script type="module" src="/index.tsx"></script>
-</body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <script type="module" src="index.tsx"></script>
+  </body>
 </html>
