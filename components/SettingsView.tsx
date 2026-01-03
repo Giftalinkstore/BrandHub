@@ -9,7 +9,11 @@ interface UserProfile {
   avatar: string;
 }
 
-const SettingsView: React.FC = () => {
+interface SettingsViewProps {
+  theme: 'dark' | 'light';
+}
+
+const SettingsView: React.FC<SettingsViewProps> = ({ theme }) => {
   // Initialize profile from LocalStorage
   const [profile, setProfile] = useState<UserProfile>(() => {
     const savedProfile = localStorage.getItem('brandHub_profile');
@@ -47,6 +51,12 @@ const SettingsView: React.FC = () => {
     handleNotification("Avatar updated successfully!");
   };
 
+  const textPrimary = theme === 'dark' ? 'text-white' : 'text-slate-900';
+  const textSecondary = theme === 'dark' ? 'text-white/50' : 'text-slate-500';
+  const borderColor = theme === 'dark' ? 'border-white/5' : 'border-slate-200';
+  const bgHover = theme === 'dark' ? 'hover:bg-white/10' : 'hover:bg-slate-200';
+  const bgCard = theme === 'dark' ? 'bg-white/5' : 'bg-slate-100';
+
   return (
     <div className="animate-fade-in space-y-8 max-w-4xl relative">
        {/* Notification Toast */}
@@ -58,16 +68,16 @@ const SettingsView: React.FC = () => {
        )}
 
       <div>
-        <h1 className="text-3xl font-bold text-white">Settings</h1>
-        <p className="text-white/50 mt-1">Manage your account and preferences.</p>
+        <h1 className={`text-3xl font-bold ${textPrimary}`}>Settings</h1>
+        <p className={`${textSecondary} mt-1`}>Manage your account and preferences.</p>
       </div>
 
       <div className="space-y-6">
         {/* Profile Section */}
         <section className="glass-panel rounded-2xl overflow-hidden">
-            <div className="p-6 border-b border-white/5 flex items-center gap-3">
+            <div className={`p-6 border-b ${borderColor} flex items-center gap-3`}>
                 <User size={20} className="text-purple-400" />
-                <h2 className="font-semibold text-white">Profile</h2>
+                <h2 className={`font-semibold ${textPrimary}`}>Profile</h2>
             </div>
             <div className="p-6 flex items-center gap-6">
                 <div className="w-20 h-20 rounded-full bg-gradient-to-br from-purple-500 to-blue-500 flex items-center justify-center text-3xl shadow-lg overflow-hidden relative">
@@ -78,8 +88,8 @@ const SettingsView: React.FC = () => {
                     )}
                 </div>
                 <div className="flex-1 space-y-1">
-                    <h3 className="text-xl font-bold text-white">{profile.name}</h3>
-                    <p className="text-white/50">{profile.email}</p>
+                    <h3 className={`text-xl font-bold ${textPrimary}`}>{profile.name}</h3>
+                    <p className={textSecondary}>{profile.email}</p>
                     <div className="text-xs text-purple-300 bg-purple-500/10 inline-block px-2 py-1 rounded border border-purple-500/20 mt-1">{profile.role}</div>
                     <div className="mt-2">
                       <button 
@@ -92,7 +102,7 @@ const SettingsView: React.FC = () => {
                 </div>
                 <button 
                   onClick={() => setIsProfileModalOpen(true)}
-                  className="px-4 py-2 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-white transition-colors"
+                  className={`px-4 py-2 rounded-xl ${bgCard} ${bgHover} border ${borderColor} ${textPrimary} transition-colors`}
                 >
                     Edit Profile
                 </button>
@@ -101,60 +111,60 @@ const SettingsView: React.FC = () => {
 
         {/* General Preferences */}
         <section className="glass-panel rounded-2xl overflow-hidden">
-            <div className="p-6 border-b border-white/5 flex items-center gap-3">
+            <div className={`p-6 border-b ${borderColor} flex items-center gap-3`}>
                 <Monitor size={20} className="text-blue-400" />
-                <h2 className="font-semibold text-white">Preferences</h2>
+                <h2 className={`font-semibold ${textPrimary}`}>Preferences</h2>
             </div>
-            <div className="divide-y divide-white/5">
+            <div className={`divide-y ${theme === 'dark' ? 'divide-white/5' : 'divide-slate-200'}`}>
                 <div className="p-6 flex items-center justify-between">
                     <div className="flex items-center gap-4">
-                        <div className="p-2 rounded-lg bg-white/5 text-white/70"><Bell size={18} /></div>
+                        <div className={`p-2 rounded-lg ${bgCard} ${theme === 'dark' ? 'text-white/70' : 'text-slate-600'}`}><Bell size={18} /></div>
                         <div>
-                            <div className="font-medium text-white">Notifications</div>
-                            <div className="text-sm text-white/40">Receive email updates about domain expiry</div>
+                            <div className={`font-medium ${textPrimary}`}>Notifications</div>
+                            <div className={`text-sm ${theme === 'dark' ? 'text-white/40' : 'text-slate-400'}`}>Receive email updates about domain expiry</div>
                         </div>
                     </div>
                     <button className="text-emerald-400 hover:text-emerald-300"><ToggleRight size={32} /></button>
                 </div>
                 <div className="p-6 flex items-center justify-between">
                     <div className="flex items-center gap-4">
-                        <div className="p-2 rounded-lg bg-white/5 text-white/70"><Globe size={18} /></div>
+                        <div className={`p-2 rounded-lg ${bgCard} ${theme === 'dark' ? 'text-white/70' : 'text-slate-600'}`}><Globe size={18} /></div>
                         <div>
-                            <div className="font-medium text-white">Language</div>
-                            <div className="text-sm text-white/40">English (US)</div>
+                            <div className={`font-medium ${textPrimary}`}>Language</div>
+                            <div className={`text-sm ${theme === 'dark' ? 'text-white/40' : 'text-slate-400'}`}>English (US)</div>
                         </div>
                     </div>
-                    <ChevronRight size={20} className="text-white/30" />
+                    <ChevronRight size={20} className={theme === 'dark' ? 'text-white/30' : 'text-slate-300'} />
                 </div>
             </div>
         </section>
 
         {/* Security */}
         <section className="glass-panel rounded-2xl overflow-hidden">
-             <div className="p-6 border-b border-white/5 flex items-center gap-3">
+             <div className={`p-6 border-b ${borderColor} flex items-center gap-3`}>
                 <Shield size={20} className="text-emerald-400" />
-                <h2 className="font-semibold text-white">Security</h2>
+                <h2 className={`font-semibold ${textPrimary}`}>Security</h2>
             </div>
-            <div className="divide-y divide-white/5">
+            <div className={`divide-y ${theme === 'dark' ? 'divide-white/5' : 'divide-slate-200'}`}>
                  <div className="p-6 flex items-center justify-between">
                     <div className="flex items-center gap-4">
-                        <div className="p-2 rounded-lg bg-white/5 text-white/70"><Lock size={18} /></div>
+                        <div className={`p-2 rounded-lg ${bgCard} ${theme === 'dark' ? 'text-white/70' : 'text-slate-600'}`}><Lock size={18} /></div>
                         <div>
-                            <div className="font-medium text-white">Two-Factor Authentication</div>
-                            <div className="text-sm text-white/40">Secure your account with 2FA</div>
+                            <div className={`font-medium ${textPrimary}`}>Two-Factor Authentication</div>
+                            <div className={`text-sm ${theme === 'dark' ? 'text-white/40' : 'text-slate-400'}`}>Secure your account with 2FA</div>
                         </div>
                     </div>
-                     <button className="text-white/30 hover:text-white/50"><ToggleLeft size={32} /></button>
+                     <button className={theme === 'dark' ? 'text-white/30 hover:text-white/50' : 'text-slate-300 hover:text-slate-500'}><ToggleLeft size={32} /></button>
                 </div>
                  <div className="p-6 flex items-center justify-between">
                     <div className="flex items-center gap-4">
-                        <div className="p-2 rounded-lg bg-white/5 text-white/70"><Smartphone size={18} /></div>
+                        <div className={`p-2 rounded-lg ${bgCard} ${theme === 'dark' ? 'text-white/70' : 'text-slate-600'}`}><Smartphone size={18} /></div>
                         <div>
-                            <div className="font-medium text-white">Active Sessions</div>
-                            <div className="text-sm text-white/40">2 devices currently logged in</div>
+                            <div className={`font-medium ${textPrimary}`}>Active Sessions</div>
+                            <div className={`text-sm ${theme === 'dark' ? 'text-white/40' : 'text-slate-400'}`}>2 devices currently logged in</div>
                         </div>
                     </div>
-                     <button className="text-sm text-white/50 hover:text-white border border-white/10 px-3 py-1.5 rounded-lg">Manage</button>
+                     <button className={`text-sm ${theme === 'dark' ? 'text-white/50 hover:text-white border-white/10' : 'text-slate-500 hover:text-slate-800 border-slate-300'} border px-3 py-1.5 rounded-lg`}>Manage</button>
                 </div>
             </div>
         </section>

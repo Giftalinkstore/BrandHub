@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { X, Copy, Check, ChevronRight } from 'lucide-react';
 import { Brand } from '../types';
@@ -18,12 +19,12 @@ export const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, children }
         className="absolute inset-0 bg-black/60 backdrop-blur-sm animate-fade-in" 
         onClick={onClose}
       />
-      <div className="relative w-full max-w-lg glass-panel rounded-2xl shadow-2xl animate-fade-in overflow-hidden border border-white/20">
-        <div className="flex items-center justify-between p-6 border-b border-white/10">
-          <h2 className="text-xl font-bold text-white">{title}</h2>
+      <div className="relative w-full max-w-lg glass-panel rounded-2xl shadow-2xl animate-fade-in overflow-hidden border">
+        <div className="flex items-center justify-between p-6 border-b border-gray-500/10">
+          <h2 className="text-xl font-bold inherit">{title}</h2>
           <button 
             onClick={onClose}
-            className="p-2 rounded-lg bg-white/5 hover:bg-white/10 text-white/50 hover:text-white transition-colors"
+            className="p-2 rounded-lg bg-gray-500/10 hover:bg-gray-500/20 opacity-70 hover:opacity-100 transition-colors"
           >
             <X size={20} />
           </button>
@@ -83,24 +84,24 @@ export const AddBrandModal: React.FC<{ isOpen: boolean; onClose: () => void; bra
       <form onSubmit={handleSubmit} className="space-y-4">
         <div className="grid grid-cols-2 gap-4">
           <div className="space-y-2">
-            <label className="text-xs font-medium text-white/60 uppercase">Brand Name</label>
+            <label className="text-xs font-medium opacity-60 uppercase">Brand Name</label>
             <input 
               name="name"
               value={formData.name}
               onChange={handleChange}
               type="text" 
               required
-              className="w-full bg-black/30 border border-white/10 rounded-xl px-4 py-3 text-white focus:border-purple-500/50 focus:outline-none transition-colors" 
+              className="w-full bg-gray-500/10 border border-gray-500/20 rounded-xl px-4 py-3 focus:border-purple-500/50 focus:outline-none transition-colors" 
               placeholder="Acme Inc." 
             />
           </div>
           <div className="space-y-2">
-            <label className="text-xs font-medium text-white/60 uppercase">Industry</label>
+            <label className="text-xs font-medium opacity-60 uppercase">Industry</label>
             <select 
               name="industry"
               value={formData.industry}
               onChange={handleChange}
-              className="w-full bg-black/30 border border-white/10 rounded-xl px-4 py-3 text-white focus:border-purple-500/50 focus:outline-none transition-colors appearance-none"
+              className="w-full bg-gray-500/10 border border-gray-500/20 rounded-xl px-4 py-3 focus:border-purple-500/50 focus:outline-none transition-colors appearance-none"
             >
               <option>Technology</option>
               <option>Retail</option>
@@ -114,20 +115,20 @@ export const AddBrandModal: React.FC<{ isOpen: boolean; onClose: () => void; bra
         </div>
         
         <div className="space-y-2">
-          <label className="text-xs font-medium text-white/60 uppercase">Website URL</label>
+          <label className="text-xs font-medium opacity-60 uppercase">Website URL</label>
           <input 
             name="website"
             value={formData.website}
             onChange={handleChange}
             type="url" 
-            className="w-full bg-black/30 border border-white/10 rounded-xl px-4 py-3 text-white focus:border-purple-500/50 focus:outline-none transition-colors" 
+            className="w-full bg-gray-500/10 border border-gray-500/20 rounded-xl px-4 py-3 focus:border-purple-500/50 focus:outline-none transition-colors" 
             placeholder="https://" 
           />
         </div>
         
         <div className="grid grid-cols-2 gap-4">
           <div className="space-y-2">
-            <label className="text-xs font-medium text-white/60 uppercase">Primary Color</label>
+            <label className="text-xs font-medium opacity-60 uppercase">Primary Color</label>
             <div className="flex items-center gap-2">
               <input 
                 name="color"
@@ -136,30 +137,30 @@ export const AddBrandModal: React.FC<{ isOpen: boolean; onClose: () => void; bra
                 type="color" 
                 className="h-12 w-16 bg-transparent rounded cursor-pointer" 
               />
-              <div className="text-xs text-white/40">Pick brand color</div>
+              <div className="text-xs opacity-40">Pick brand color</div>
             </div>
           </div>
           <div className="space-y-2">
-            <label className="text-xs font-medium text-white/60 uppercase">Logo</label>
+            <label className="text-xs font-medium opacity-60 uppercase">Logo</label>
              <input 
               name="logo"
               value={formData.logo}
               onChange={handleChange}
               type="text" 
-              className="w-full bg-black/30 border border-white/10 rounded-xl px-4 py-3 text-white focus:border-purple-500/50 focus:outline-none transition-colors" 
+              className="w-full bg-gray-500/10 border border-gray-500/20 rounded-xl px-4 py-3 focus:border-purple-500/50 focus:outline-none transition-colors" 
               placeholder="Emoji (⚡) or Image URL (https://...)" 
             />
           </div>
         </div>
 
         <div className="space-y-2">
-          <label className="text-xs font-medium text-white/60 uppercase">Description</label>
+          <label className="text-xs font-medium opacity-60 uppercase">Description</label>
           <textarea 
             name="description"
             value={formData.description}
             onChange={handleChange}
             rows={3} 
-            className="w-full bg-black/30 border border-white/10 rounded-xl px-4 py-3 text-white focus:border-purple-500/50 focus:outline-none transition-colors" 
+            className="w-full bg-gray-500/10 border border-gray-500/20 rounded-xl px-4 py-3 focus:border-purple-500/50 focus:outline-none transition-colors" 
             placeholder="Brief description..."
           ></textarea>
         </div>
@@ -190,17 +191,17 @@ export const CredentialsModal: React.FC<{ isOpen: boolean; onClose: () => void; 
       <div className="space-y-6">
         {brand.resources.hosting && (
           <div className="space-y-3">
-            <h3 className="text-sm font-semibold text-white/40 uppercase tracking-wider">Hosting ({brand.resources.hosting.provider})</h3>
+            <h3 className="text-sm font-semibold opacity-40 uppercase tracking-wider">Hosting ({brand.resources.hosting.provider})</h3>
             
-            <div className="bg-black/30 rounded-xl p-4 border border-white/5 space-y-4">
+            <div className="bg-gray-500/10 rounded-xl p-4 border border-gray-500/20 space-y-4">
               <div className="flex items-center justify-between group">
                 <div>
-                  <div className="text-xs text-white/40 mb-1">Username</div>
-                  <div className="font-mono text-sm text-purple-300">{brand.resources.hosting.username}</div>
+                  <div className="text-xs opacity-40 mb-1">Username</div>
+                  <div className="font-mono text-sm text-purple-400">{brand.resources.hosting.username}</div>
                 </div>
                 <button 
                   onClick={() => copyToClipboard(brand.resources.hosting?.username || '', 'user')}
-                  className="p-2 rounded-lg bg-white/5 hover:bg-white/10 text-white/50 hover:text-white transition-colors"
+                  className="p-2 rounded-lg bg-gray-500/10 hover:bg-gray-500/20 opacity-50 hover:opacity-100 transition-colors"
                 >
                   {copied === 'user' ? <Check size={16} className="text-emerald-400" /> : <Copy size={16} />}
                 </button>
@@ -208,12 +209,12 @@ export const CredentialsModal: React.FC<{ isOpen: boolean; onClose: () => void; 
               
               <div className="flex items-center justify-between group">
                 <div>
-                  <div className="text-xs text-white/40 mb-1">Password</div>
-                  <div className="font-mono text-sm text-purple-300 tracking-widest">{brand.resources.hosting.password}</div>
+                  <div className="text-xs opacity-40 mb-1">Password</div>
+                  <div className="font-mono text-sm text-purple-400 tracking-widest">{brand.resources.hosting.password}</div>
                 </div>
                 <button 
                   onClick={() => copyToClipboard(brand.resources.hosting?.password || '', 'pass')}
-                  className="p-2 rounded-lg bg-white/5 hover:bg-white/10 text-white/50 hover:text-white transition-colors"
+                  className="p-2 rounded-lg bg-gray-500/10 hover:bg-gray-500/20 opacity-50 hover:opacity-100 transition-colors"
                 >
                    {copied === 'pass' ? <Check size={16} className="text-emerald-400" /> : <Copy size={16} />}
                 </button>
@@ -221,12 +222,12 @@ export const CredentialsModal: React.FC<{ isOpen: boolean; onClose: () => void; 
 
                <div className="flex items-center justify-between group">
                 <div>
-                  <div className="text-xs text-white/40 mb-1">Login URL</div>
-                  <div className="font-mono text-sm text-blue-300 truncate max-w-[200px]">{brand.resources.hosting.loginUrl}</div>
+                  <div className="text-xs opacity-40 mb-1">Login URL</div>
+                  <div className="font-mono text-sm text-blue-400 truncate max-w-[200px]">{brand.resources.hosting.loginUrl}</div>
                 </div>
                 <button 
                    onClick={() => copyToClipboard(brand.resources.hosting?.loginUrl || '', 'url')}
-                  className="p-2 rounded-lg bg-white/5 hover:bg-white/10 text-white/50 hover:text-white transition-colors"
+                  className="p-2 rounded-lg bg-gray-500/10 hover:bg-gray-500/20 opacity-50 hover:opacity-100 transition-colors"
                 >
                    {copied === 'url' ? <Check size={16} className="text-emerald-400" /> : <Copy size={16} />}
                 </button>
@@ -236,7 +237,7 @@ export const CredentialsModal: React.FC<{ isOpen: boolean; onClose: () => void; 
         )}
 
         {!brand.resources.hosting && (
-          <div className="text-center py-8 text-white/30 italic">
+          <div className="text-center py-8 opacity-30 italic">
             No credentials stored for this brand.
           </div>
         )}
@@ -276,34 +277,34 @@ export const EditProfileModal: React.FC<{ isOpen: boolean; onClose: () => void; 
     <Modal isOpen={isOpen} onClose={onClose} title="Edit Profile">
       <form onSubmit={handleSubmit} className="space-y-4">
         <div className="space-y-2">
-          <label className="text-xs font-medium text-white/60 uppercase">Full Name</label>
+          <label className="text-xs font-medium opacity-60 uppercase">Full Name</label>
           <input 
             name="name"
             value={formData.name}
             onChange={handleChange}
             type="text" 
-            className="w-full bg-black/30 border border-white/10 rounded-xl px-4 py-3 text-white focus:border-purple-500/50 focus:outline-none transition-colors" 
+            className="w-full bg-gray-500/10 border border-gray-500/20 rounded-xl px-4 py-3 focus:border-purple-500/50 focus:outline-none transition-colors" 
           />
         </div>
         
         <div className="space-y-2">
-          <label className="text-xs font-medium text-white/60 uppercase">Email Address</label>
+          <label className="text-xs font-medium opacity-60 uppercase">Email Address</label>
           <input 
              name="email"
              value={formData.email}
              onChange={handleChange}
              type="email" 
-             className="w-full bg-black/30 border border-white/10 rounded-xl px-4 py-3 text-white focus:border-purple-500/50 focus:outline-none transition-colors" 
+             className="w-full bg-gray-500/10 border border-gray-500/20 rounded-xl px-4 py-3 focus:border-purple-500/50 focus:outline-none transition-colors" 
           />
         </div>
         
         <div className="space-y-2">
-          <label className="text-xs font-medium text-white/60 uppercase">Role</label>
+          <label className="text-xs font-medium opacity-60 uppercase">Role</label>
           <select 
              name="role"
              value={formData.role}
              onChange={handleChange}
-             className="w-full bg-black/30 border border-white/10 rounded-xl px-4 py-3 text-white focus:border-purple-500/50 focus:outline-none transition-colors appearance-none"
+             className="w-full bg-gray-500/10 border border-gray-500/20 rounded-xl px-4 py-3 focus:border-purple-500/50 focus:outline-none transition-colors appearance-none"
           >
             <option>Administrator</option>
             <option>Editor</option>
@@ -334,12 +335,12 @@ export const ChangeAvatarModal: React.FC<{ isOpen: boolean; onClose: () => void;
     <Modal isOpen={isOpen} onClose={onClose} title="Change Avatar">
       <form onSubmit={handleSubmit} className="space-y-4">
         <div className="space-y-2">
-          <label className="text-xs font-medium text-white/60 uppercase">Avatar URL</label>
+          <label className="text-xs font-medium opacity-60 uppercase">Avatar URL</label>
           <input 
             type="url" 
             value={url}
             onChange={(e) => setUrl(e.target.value)}
-            className="w-full bg-black/30 border border-white/10 rounded-xl px-4 py-3 text-white focus:border-purple-500/50 focus:outline-none transition-colors" 
+            className="w-full bg-gray-500/10 border border-gray-500/20 rounded-xl px-4 py-3 focus:border-purple-500/50 focus:outline-none transition-colors" 
             placeholder="https://..." 
           />
         </div>
@@ -362,7 +363,7 @@ export const BrandSelectorModal: React.FC<{ isOpen: boolean; onClose: () => void
              <button
                key={brand.id}
                onClick={() => onSelect(brand)}
-               className="flex items-center gap-4 p-4 rounded-xl bg-white/5 hover:bg-white/10 border border-white/5 hover:border-white/20 transition-all group text-left"
+               className="flex items-center gap-4 p-4 rounded-xl bg-gray-500/10 hover:bg-gray-500/20 border border-gray-500/10 hover:border-gray-500/30 transition-all group text-left"
              >
                <div className="w-10 h-10 rounded-lg flex items-center justify-center text-xl shadow-lg overflow-hidden" style={{ backgroundColor: brand.color }}>
                  {brand.logo.startsWith('http') ? (
@@ -372,13 +373,214 @@ export const BrandSelectorModal: React.FC<{ isOpen: boolean; onClose: () => void
                  )}
                </div>
                <div className="flex-1">
-                 <div className="font-medium text-white">{brand.name}</div>
-                 <div className="text-xs text-white/50">{brand.industry}</div>
+                 <div className="font-medium inherit">{brand.name}</div>
+                 <div className="text-xs opacity-50">{brand.industry}</div>
                </div>
-               <ChevronRight size={18} className="text-white/30 group-hover:text-white transition-colors" />
+               <ChevronRight size={18} className="opacity-30 group-hover:opacity-100 transition-colors" />
              </button>
           ))}
        </div>
+    </Modal>
+  );
+};
+
+export const AddResourceModal: React.FC<{ 
+  isOpen: boolean; 
+  onClose: () => void; 
+  brands: Brand[]; 
+  onSave: (brandId: string, type: string, data: any) => void;
+  initialData?: { brandId: string; type: string; data: any; } | null;
+}> = ({ isOpen, onClose, brands, onSave, initialData }) => {
+  const [brandId, setBrandId] = useState('');
+  const [type, setType] = useState('hosting');
+  const [formData, setFormData] = useState({
+    provider: '',
+    plan: '',
+    url: '',
+    username: '',
+    password: '',
+    expiry: '',
+    registrar: '',
+    nameservers: '',
+    googleId: '',
+    autoRenew: false
+  });
+
+  useEffect(() => {
+    if (isOpen) {
+      if (initialData) {
+        // Edit Mode
+        setBrandId(initialData.brandId);
+        setType(initialData.type);
+        setFormData({
+          provider: initialData.data.provider || '',
+          plan: initialData.data.plan || '',
+          url: initialData.data.loginUrl || '',
+          username: initialData.data.username || '',
+          password: initialData.data.password || '',
+          expiry: initialData.data.expiry || '',
+          registrar: initialData.data.registrar || '',
+          nameservers: initialData.data.nameservers ? initialData.data.nameservers.join(', ') : '',
+          googleId: initialData.data.googleId || '',
+          autoRenew: initialData.data.autoRenew || false
+        });
+      } else if (brands.length > 0) {
+        // Add Mode
+        setBrandId(brands[0].id);
+        setType('hosting');
+        setFormData({
+          provider: '',
+          plan: '',
+          url: '',
+          username: '',
+          password: '',
+          expiry: '',
+          registrar: '',
+          nameservers: '',
+          googleId: '',
+          autoRenew: false
+        });
+      }
+    }
+  }, [isOpen, brands, initialData]);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const data: any = { provider: formData.provider };
+    
+    if (type === 'hosting') {
+      data.plan = formData.plan;
+      data.loginUrl = formData.url;
+      data.username = formData.username;
+      data.password = formData.password;
+      data.expiry = formData.expiry;
+    } else if (type === 'domain') {
+      data.registrar = formData.registrar || formData.provider;
+      data.expiry = formData.expiry;
+      data.autoRenew = formData.autoRenew;
+    } else if (type === 'dns') {
+       data.nameservers = formData.nameservers.split(',').map(s => s.trim());
+       data.status = 'active';
+    } else if (type === 'analytics') {
+       data.googleId = formData.googleId;
+       data.status = 'active';
+    }
+
+    onSave(brandId, type, data);
+    onClose();
+  };
+
+  return (
+    <Modal isOpen={isOpen} onClose={onClose} title={initialData ? "Edit Resource" : "Add Resource"}>
+      <form onSubmit={handleSubmit} className="space-y-4">
+        <div className="grid grid-cols-2 gap-4">
+            <div className="space-y-2">
+                <label className="text-xs font-medium opacity-60 uppercase">Brand</label>
+                <select 
+                    value={brandId} 
+                    onChange={(e) => setBrandId(e.target.value)}
+                    disabled={!!initialData}
+                    className="w-full bg-gray-500/10 border border-gray-500/20 rounded-xl px-4 py-3 focus:border-purple-500/50 focus:outline-none transition-colors appearance-none disabled:opacity-50"
+                >
+                    {brands.map(b => <option key={b.id} value={b.id}>{b.name}</option>)}
+                </select>
+            </div>
+            <div className="space-y-2">
+                <label className="text-xs font-medium opacity-60 uppercase">Resource Type</label>
+                <select 
+                    value={type} 
+                    onChange={(e) => setType(e.target.value)}
+                    disabled={!!initialData}
+                    className="w-full bg-gray-500/10 border border-gray-500/20 rounded-xl px-4 py-3 focus:border-purple-500/50 focus:outline-none transition-colors appearance-none disabled:opacity-50"
+                >
+                    <option value="hosting">Hosting</option>
+                    <option value="domain">Domain</option>
+                    <option value="dns">DNS</option>
+                    <option value="analytics">Analytics</option>
+                </select>
+            </div>
+        </div>
+
+        <div className="space-y-2">
+            <label className="text-xs font-medium opacity-60 uppercase">Provider</label>
+            <input 
+                type="text" 
+                required
+                value={formData.provider}
+                onChange={(e) => setFormData({...formData, provider: e.target.value})}
+                placeholder="e.g. AWS, GoDaddy, Cloudflare"
+                className="w-full bg-gray-500/10 border border-gray-500/20 rounded-xl px-4 py-3 focus:border-purple-500/50 focus:outline-none" 
+            />
+        </div>
+
+        {type === 'hosting' && (
+            <>
+                <div className="grid grid-cols-2 gap-4">
+                    <div className="space-y-2">
+                        <label className="text-xs font-medium opacity-60 uppercase">Plan</label>
+                        <input type="text" value={formData.plan} onChange={(e) => setFormData({...formData, plan: e.target.value})} className="w-full bg-gray-500/10 border border-gray-500/20 rounded-xl px-4 py-3 focus:border-purple-500/50 focus:outline-none" />
+                    </div>
+                    <div className="space-y-2">
+                        <label className="text-xs font-medium opacity-60 uppercase">Expiry Date</label>
+                        <input type="date" value={formData.expiry} onChange={(e) => setFormData({...formData, expiry: e.target.value})} className="w-full bg-gray-500/10 border border-gray-500/20 rounded-xl px-4 py-3 focus:border-purple-500/50 focus:outline-none" />
+                    </div>
+                </div>
+                <div className="space-y-2">
+                    <label className="text-xs font-medium opacity-60 uppercase">Login URL</label>
+                    <input type="url" value={formData.url} onChange={(e) => setFormData({...formData, url: e.target.value})} className="w-full bg-gray-500/10 border border-gray-500/20 rounded-xl px-4 py-3 focus:border-purple-500/50 focus:outline-none" />
+                </div>
+                 <div className="grid grid-cols-2 gap-4">
+                    <div className="space-y-2">
+                        <label className="text-xs font-medium opacity-60 uppercase">Username</label>
+                        <input type="text" value={formData.username} onChange={(e) => setFormData({...formData, username: e.target.value})} className="w-full bg-gray-500/10 border border-gray-500/20 rounded-xl px-4 py-3 focus:border-purple-500/50 focus:outline-none" />
+                    </div>
+                    <div className="space-y-2">
+                        <label className="text-xs font-medium opacity-60 uppercase">Password</label>
+                        <input type="text" value={formData.password} onChange={(e) => setFormData({...formData, password: e.target.value})} className="w-full bg-gray-500/10 border border-gray-500/20 rounded-xl px-4 py-3 focus:border-purple-500/50 focus:outline-none" />
+                    </div>
+                </div>
+            </>
+        )}
+
+        {type === 'domain' && (
+             <>
+                <div className="grid grid-cols-2 gap-4">
+                    <div className="space-y-2">
+                        <label className="text-xs font-medium opacity-60 uppercase">Registrar</label>
+                        <input type="text" value={formData.registrar} onChange={(e) => setFormData({...formData, registrar: e.target.value})} placeholder="If different from provider" className="w-full bg-gray-500/10 border border-gray-500/20 rounded-xl px-4 py-3 focus:border-purple-500/50 focus:outline-none" />
+                    </div>
+                    <div className="space-y-2">
+                        <label className="text-xs font-medium opacity-60 uppercase">Expiry Date</label>
+                        <input type="date" value={formData.expiry} onChange={(e) => setFormData({...formData, expiry: e.target.value})} className="w-full bg-gray-500/10 border border-gray-500/20 rounded-xl px-4 py-3 focus:border-purple-500/50 focus:outline-none" />
+                    </div>
+                </div>
+                <div className="flex items-center gap-3 py-2">
+                    <input type="checkbox" checked={formData.autoRenew} onChange={(e) => setFormData({...formData, autoRenew: e.target.checked})} className="w-5 h-5 rounded border-gray-500/20 bg-gray-500/10 text-purple-600 focus:ring-purple-500" />
+                    <label className="text-sm opacity-80">Auto-renew enabled</label>
+                </div>
+             </>
+        )}
+
+        {type === 'dns' && (
+            <div className="space-y-2">
+                <label className="text-xs font-medium opacity-60 uppercase">Nameservers</label>
+                <textarea rows={2} value={formData.nameservers} onChange={(e) => setFormData({...formData, nameservers: e.target.value})} placeholder="ns1.example.com, ns2.example.com" className="w-full bg-gray-500/10 border border-gray-500/20 rounded-xl px-4 py-3 focus:border-purple-500/50 focus:outline-none" />
+            </div>
+        )}
+
+        {type === 'analytics' && (
+            <div className="space-y-2">
+                <label className="text-xs font-medium opacity-60 uppercase">Google Analytics ID</label>
+                <input type="text" value={formData.googleId} onChange={(e) => setFormData({...formData, googleId: e.target.value})} placeholder="UA-XXXXX-Y or G-XXXXXXX" className="w-full bg-gray-500/10 border border-gray-500/20 rounded-xl px-4 py-3 focus:border-purple-500/50 focus:outline-none" />
+            </div>
+        )}
+
+        <div className="pt-4">
+          <button type="submit" className="w-full py-3.5 bg-gradient-to-r from-purple-600 to-blue-600 rounded-xl text-white font-semibold shadow-lg shadow-purple-500/20 hover:scale-[1.02] transition-transform">
+            {initialData ? 'Save Changes' : 'Add Resource'}
+          </button>
+        </div>
+      </form>
     </Modal>
   );
 };
